@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+.chrome_*
+.chrome-screenshot-tmp/
+.cdp-profile-*/
+ss_tmp*.png
+ss_direct.png
+temporary screenshots/
+*.log
