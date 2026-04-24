@@ -121,7 +121,7 @@
       gap: 1.5rem;
     }
     .nav-brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; flex-shrink: 0; }
-    .nav-brand img { height: 84px; object-fit: contain; transition: height 0.35s ease; }
+    .nav-brand img { height: 74px; object-fit: contain; transition: height 0.35s ease; }
     #navbar.scrolled .nav-brand img { height: 54px; }
     .nav-brand-text { line-height: 1.15; }
     .nav-brand-name {
@@ -981,6 +981,52 @@
       transform: translateY(-2px);
     }
 
+    /* ── MOBILE CHIP NAV (persistent horizontal nav below navbar) ── */
+    #mobChips {
+      position: fixed;
+      top: 82px;
+      left: 0; right: 0;
+      z-index: 480;
+      padding: 0.55rem 0.9rem;
+      background: rgba(251,248,241,0.82);
+      border-bottom: 1px solid var(--hairline);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      display: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      white-space: nowrap;
+      transition: top 0.35s ease, padding 0.35s ease;
+    }
+    #mobChips::-webkit-scrollbar { display: none; }
+    #navbar.scrolled ~ #mobChips { top: 68px; padding: 0.45rem 0.9rem; }
+    .mob-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.9rem;
+      margin-right: 0.45rem;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--hairline);
+      color: var(--ink-2);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(20,16,11,0.04);
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .mob-chip:last-child { margin-right: 0; }
+    .mob-chip:active { transform: scale(0.96); }
+    .mob-chip.mob-chip-accent {
+      background: linear-gradient(135deg, #D99418, #F5C85A);
+      color: #1A1108;
+      border-color: transparent;
+      box-shadow: 0 4px 12px -4px rgba(200,134,10,0.45);
+    }
+
     /* ── MOBILE MENU ── */
     .mob-menu {
       position: fixed;
@@ -1140,6 +1186,10 @@
 
       /* WA float & toast avoid overlap */
       .wa-float { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; }
+
+      /* Mobile chip nav visible on mobile only */
+      #mobChips { display: block; }
+      body { padding-top: 54px; }
     }
     @media (max-width: 420px) {
       .nav-brand img { height: 52px; }
@@ -1213,6 +1263,17 @@
       </svg>
     </button>
   </div>
+</nav>
+
+<!-- ═══════════════════════ MOBILE CHIP NAV ═══════════════════════ -->
+<nav id="mobChips" aria-label="Navigasi cepat">
+  <a href="#tentang"   class="mob-chip">Tentang</a>
+  <a href="#paket"     class="mob-chip">Paket</a>
+  <a href="#why"       class="mob-chip">Why Us</a>
+  <a href="#galeri"    class="mob-chip">Galeri</a>
+  <a href="#oleh"      class="mob-chip">Oleh-Oleh</a>
+  <a href="#testimoni" class="mob-chip">Testimoni</a>
+  <a href="#kontak"    class="mob-chip mob-chip-accent">Konsultasi</a>
 </nav>
 
 <!-- ═══════════════════════ MOBILE MENU ═══════════════════════ -->
@@ -1329,15 +1390,15 @@
     <div class="paket-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;">
 
       <div class="paket-card reveal d1">
-        <div class="paket-thumb" data-img="assets/Paket/Regjul.jpeg" data-title="Umrah Syawal">
-          <img src="assets/Paket/Regjul.jpeg" alt="Paket Umrah Syawal">
+        <div class="paket-thumb" data-img="assets/Paket/Regjul.jpeg" data-title="Umrah Reguler">
+          <img src="assets/Paket/Regjul.jpeg" alt="Paket Umrah Reguler">
           <div class="paket-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
         </div>
         <div class="paket-body">
           <div class="paket-tag">Edisi Terbaik</div>
-          <div class="paket-title">Umrah Syawal</div>
+          <div class="paket-title">Umrah Reguler</div>
           <p class="paket-desc">Perjalanan ibadah Umrah spesial bulan Syawal dengan suasana yang tenang setelah Ramadhan, fasilitas premium dekat Masjidil Haram.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Syawal" data-img="assets/Paket/Regjul.jpeg">
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Reguler" data-img="assets/Paket/Regjul.jpeg">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1345,15 +1406,15 @@
       </div>
 
       <div class="paket-card reveal d2">
-        <div class="paket-thumb" data-img="assets/Paket/berkahsep.jpeg" data-title="Umrah Ramadhan">
-          <img src="assets/Paket/berkahsep.jpeg" alt="Paket Umrah Ramadhan">
+        <div class="paket-thumb" data-img="assets/Paket/berkahsep.jpeg" data-title="Umrah Promo Berkah">
+          <img src="assets/Paket/berkahsep.jpeg" alt="Paket Umrah Promo Berkah">
           <div class="paket-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
         </div>
         <div class="paket-body">
           <div class="paket-tag">Paling Dicari</div>
-          <div class="paket-title">Umrah Ramadhan</div>
+          <div class="paket-title">Umrah Promo Berkah</div>
           <p class="paket-desc">Ibadah Umrah di bulan suci dengan pahala berlipat, i'tikaf di Masjidil Haram, buka puasa istimewa, dan jadwal ibadah terstruktur.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Ramadhan" data-img="assets/Paket/berkahsep.jpeg">
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Promo Berkah" data-img="assets/Paket/berkahsep.jpeg">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1892,7 +1953,7 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
   });
 })();
 
-/* ── PAKET: Daftar Sekarang → copy image to clipboard + open WhatsApp chat ── */
+/* ── PAKET: Daftar Sekarang → WhatsApp with image attached ── */
 const WA_NUMBER = '6285747746260';
 
 function showToast(msg) {
@@ -1910,16 +1971,19 @@ function showToast(msg) {
   t._h = setTimeout(() => t.classList.remove('show'), 4800);
 }
 
-/**
- * Copy paket image to the clipboard so jamaah can paste it in WhatsApp
- * without any download or Share dialog. Image is converted to PNG
- * because ClipboardItem only accepts image/png on most browsers.
- */
+async function fetchAsFile(imgPath, niceName) {
+  const res  = await fetch(imgPath);
+  const blob = await res.blob();
+  const type = blob.type || 'image/jpeg';
+  const ext  = type.includes('png') ? 'png' : (type.includes('jpeg') || type.includes('jpg') ? 'jpg' : 'img');
+  const fname = niceName.replace(/\s+/g, '_') + '.' + ext;
+  return new File([blob], fname, { type });
+}
+
 async function copyImageToClipboard(imgPath) {
   if (!navigator.clipboard || !window.ClipboardItem) return false;
   const res = await fetch(imgPath);
   const srcBlob = await res.blob();
-
   const pngBlob = await new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = 'anonymous';
@@ -1927,14 +1991,12 @@ async function copyImageToClipboard(imgPath) {
       const canvas = document.createElement('canvas');
       canvas.width = img.naturalWidth;
       canvas.height = img.naturalHeight;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
+      canvas.getContext('2d').drawImage(img, 0, 0);
       canvas.toBlob(b => b ? resolve(b) : reject(new Error('toBlob failed')), 'image/png');
     };
     img.onerror = reject;
     img.src = URL.createObjectURL(srcBlob);
   });
-
   await navigator.clipboard.write([new ClipboardItem({ 'image/png': pngBlob })]);
   return true;
 }
@@ -1944,16 +2006,27 @@ async function daftarPaket(btn) {
   const imgPath = btn.dataset.img  || '';
   const text    = "Assalamu'alaikum Warahmatullahi Wabarakatuh. Kak, saya mau daftar paket " + paket + ". Mohon informasinya lebih lanjut. Terima kasih.";
 
-  let copied = false;
-  if (imgPath) {
-    try { copied = await copyImageToClipboard(imgPath); }
-    catch (_) { copied = false; }
+  // Preferred path: Web Share API — user picks WhatsApp and both image & text are attached.
+  if (imgPath && navigator.share && navigator.canShare) {
+    try {
+      const file = await fetchAsFile(imgPath, paket);
+      if (navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], text, title: 'Daftar Paket ' + paket });
+        return;
+      }
+    } catch (err) {
+      if (err && err.name === 'AbortError') return;
+    }
   }
 
+  // Fallback: copy image to clipboard (desktop Chrome/Edge) + open WA chat with text.
+  let copied = false;
+  if (imgPath) {
+    try { copied = await copyImageToClipboard(imgPath); } catch (_) {}
+  }
   showToast(copied
-    ? 'Gambar paket tersalin. Tekan paste (Ctrl/Cmd+V) di WhatsApp.'
-    : 'Mengarahkan ke WhatsApp...'
-  );
+    ? 'Gambar paket tersalin. Tekan paste (Ctrl/Cmd+V) di WhatsApp untuk melampirkan.'
+    : 'Mengarahkan ke WhatsApp...');
 
   const waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
   window.open(waUrl, '_blank', 'noopener,noreferrer');
