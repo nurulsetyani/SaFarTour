@@ -25,7 +25,8 @@ const mime = {
 };
 
 const server = createServer(async (req, res) => {
-  const url = req.url.split('?')[0];
+  const rawUrl = req.url.split('?')[0];
+  const url = decodeURIComponent(rawUrl);
   const filePath = join(__dirname, url === '/' ? 'index.html' : url);
 
   try {
