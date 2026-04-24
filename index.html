@@ -120,8 +120,8 @@
       justify-content: space-between;
       gap: 1.5rem;
     }
-    .nav-brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; flex-shrink: 0; }
-    .nav-brand img { height: 74px; object-fit: contain; transition: height 0.35s ease; }
+    .nav-brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; flex-shrink: 0; }
+    .nav-brand img { height: 64px; object-fit: contain; transition: height 0.35s ease; }
     #navbar.scrolled .nav-brand img { height: 54px; }
     .nav-brand-text { line-height: 1.15; }
     .nav-brand-name {
@@ -981,52 +981,6 @@
       transform: translateY(-2px);
     }
 
-    /* ── MOBILE CHIP NAV (persistent horizontal nav below navbar) ── */
-    #mobChips {
-      position: fixed;
-      top: 82px;
-      left: 0; right: 0;
-      z-index: 480;
-      padding: 0.55rem 0.9rem;
-      background: rgba(251,248,241,0.82);
-      border-bottom: 1px solid var(--hairline);
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      display: none;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      white-space: nowrap;
-      transition: top 0.35s ease, padding 0.35s ease;
-    }
-    #mobChips::-webkit-scrollbar { display: none; }
-    #navbar.scrolled ~ #mobChips { top: 68px; padding: 0.45rem 0.9rem; }
-    .mob-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.9rem;
-      margin-right: 0.45rem;
-      border-radius: 999px;
-      background: #fff;
-      border: 1px solid var(--hairline);
-      color: var(--ink-2);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      text-decoration: none;
-      box-shadow: 0 2px 4px rgba(20,16,11,0.04);
-      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .mob-chip:last-child { margin-right: 0; }
-    .mob-chip:active { transform: scale(0.96); }
-    .mob-chip.mob-chip-accent {
-      background: linear-gradient(135deg, #D99418, #F5C85A);
-      color: #1A1108;
-      border-color: transparent;
-      box-shadow: 0 4px 12px -4px rgba(200,134,10,0.45);
-    }
-
     /* ── MOBILE MENU ── */
     .mob-menu {
       position: fixed;
@@ -1133,12 +1087,12 @@
       #menuBtn { display: flex !important; }
       .footer-grid { grid-template-columns: 1fr !important; }
       .section-wrap { padding: 0 1.25rem; }
-      .nav-brand img { height: 58px; }
-      #navbar.scrolled .nav-brand img { height: 50px; }
-      .nav-brand { gap: 0.6rem; }
-      .nav-brand-name { font-size: 0.95rem; }
-      .nav-brand-sub { display: none; }
-      .nav-brand-ppiu { font-size: 0.52rem; letter-spacing: 0.06em; }
+      .nav-brand img { height: 52px; }
+      #navbar.scrolled .nav-brand img { height: 46px; }
+      .nav-brand { gap: 0.55rem; }
+      .nav-brand-name { font-size: 0.82rem; letter-spacing: -0.005em; }
+      .nav-brand-sub { font-size: 0.5rem; letter-spacing: 0.12em; }
+      .nav-brand-ppiu { font-size: 0.46rem; letter-spacing: 0.04em; white-space: nowrap; }
 
       /* Reduce section padding */
       section#tentang, section#paket, section#why,
@@ -1186,19 +1140,23 @@
 
       /* WA float & toast avoid overlap */
       .wa-float { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; }
-
-      /* Mobile chip nav visible on mobile only */
-      #mobChips { display: block; }
-      body { padding-top: 54px; }
     }
     @media (max-width: 420px) {
-      .nav-brand img { height: 52px; }
-      #navbar.scrolled .nav-brand img { height: 46px; }
-      .nav-brand-text { display: none; }
+      .nav-brand img { height: 46px; }
+      #navbar.scrolled .nav-brand img { height: 40px; }
+      .nav-brand { gap: 0.45rem; }
+      .nav-brand-name { font-size: 0.76rem; }
+      .nav-brand-sub { font-size: 0.46rem; }
+      .nav-brand-ppiu { font-size: 0.42rem; }
       .hero h1 { letter-spacing: -0.03em; }
       .sec-title { font-size: 1.85rem !important; }
       .testi-slide { width: 220px; height: 320px; }
       .hero-cta .btn-gold, .hero-cta .btn-ghost { width: 100%; flex: 0 0 auto; }
+    }
+    @media (max-width: 360px) {
+      .nav-brand img { height: 42px; }
+      .nav-brand-name { font-size: 0.72rem; }
+      .nav-brand-ppiu { font-size: 0.4rem; letter-spacing: 0.02em; }
     }
 
     /* ── section shells ── */
@@ -1263,17 +1221,6 @@
       </svg>
     </button>
   </div>
-</nav>
-
-<!-- ═══════════════════════ MOBILE CHIP NAV ═══════════════════════ -->
-<nav id="mobChips" aria-label="Navigasi cepat">
-  <a href="#tentang"   class="mob-chip">Tentang</a>
-  <a href="#paket"     class="mob-chip">Paket</a>
-  <a href="#why"       class="mob-chip">Why Us</a>
-  <a href="#galeri"    class="mob-chip">Galeri</a>
-  <a href="#oleh"      class="mob-chip">Oleh-Oleh</a>
-  <a href="#testimoni" class="mob-chip">Testimoni</a>
-  <a href="#kontak"    class="mob-chip mob-chip-accent">Konsultasi</a>
 </nav>
 
 <!-- ═══════════════════════ MOBILE MENU ═══════════════════════ -->
@@ -1954,7 +1901,7 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
 })();
 
 /* ── PAKET: Daftar Sekarang → WhatsApp with image attached ── */
-const WA_NUMBER = '6285747746260';
+const WA_NUMBER = '628547746260';
 
 function showToast(msg) {
   let t = document.getElementById('toast');
