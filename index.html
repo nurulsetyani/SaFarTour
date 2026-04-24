@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Salamah Farhah Tour Travel — Haji & Umrah Terpercaya</title>
   <meta name="description" content="Penyelenggara Haji & Umrah resmi Kemenag. No. PPIU 27062200296520002. Pembimbing bersertifikat, akomodasi premium dekat Masjidil Haram.">
-  <link rel="icon" href="assets/logosafar.png" type="image/png">
-  <link rel="shortcut icon" href="assets/logosafar.png" type="image/png">
+  <link rel="icon" href="assets/logo11.png" type="image/png">
+  <link rel="shortcut icon" href="assets/logo11.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,13 +37,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg);
       color: var(--body);
-      overflow-x: hidden;
       font-feature-settings: 'ss01', 'cv11';
       -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     h1, h2, h3, h4, h5 {
@@ -115,8 +120,8 @@
       justify-content: space-between;
       gap: 1.5rem;
     }
-    .nav-brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; flex-shrink: 0; }
-    .nav-brand img { height: 64px; object-fit: contain; transition: height 0.35s ease; }
+    .nav-brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; flex-shrink: 0; }
+    .nav-brand img { height: 84px; object-fit: contain; transition: height 0.35s ease; }
     #navbar.scrolled .nav-brand img { height: 54px; }
     .nav-brand-text { line-height: 1.15; }
     .nav-brand-name {
@@ -244,6 +249,8 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      width: 100%;
+      max-width: 100vw;
     }
     .hero video {
       position: absolute;
@@ -275,8 +282,9 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      padding: 0 1.5rem;
+      padding: 0 1.25rem;
       max-width: 980px;
+      width: 100%;
     }
     .hero-badge {
       display: inline-flex;
@@ -304,15 +312,17 @@
       box-shadow: 0 0 8px #34D399;
     }
     .hero h1 {
-      font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+      font-size: clamp(2rem, 7vw, 5.6rem);
       font-weight: 300;
       color: #FBF8F1;
-      line-height: 1;
+      line-height: 1.05;
       letter-spacing: -0.035em;
       margin-bottom: 1.5rem;
       opacity: 0;
       transform: translateY(24px);
       animation: fadeUp 1s 0.45s ease forwards;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     .hero h1 em {
       font-style: italic;
@@ -834,7 +844,23 @@
         0 2px 6px rgba(20,16,11,0.05),
         0 22px 50px -28px rgba(20,16,11,0.25);
       transition: transform 0.4s cubic-bezier(0.25,1,0.5,1);
+      cursor: zoom-in;
     }
+    .oleh-tile::before {
+      content: '';
+      position: absolute;
+      top: 0.7rem; right: 0.7rem;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='%2314100B' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M21 21l-4.35-4.35'/%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='M8 11h6M11 8v6'/%3E%3C/svg%3E") center/15px no-repeat;
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow: 0 4px 14px rgba(20,16,11,0.2);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .oleh-tile:hover::before { opacity: 1; transform: scale(1); }
     .oleh-tile.oleh-tile-wide {
       grid-column: span 2;
       aspect-ratio: 2/1;
@@ -982,6 +1008,29 @@
     }
     .mob-nav-link:hover { color: var(--gold); }
 
+    /* ── TOAST ── */
+    #toast {
+      position: fixed;
+      left: 50%;
+      bottom: 6rem;
+      transform: translate(-50%, 16px);
+      background: rgba(20,16,11,0.92);
+      color: #FBF8F1;
+      padding: 0.85rem 1.3rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      box-shadow: 0 20px 40px -18px rgba(20,16,11,0.6), 0 0 0 1px rgba(245,200,90,0.2);
+      z-index: 700;
+      opacity: 0;
+      pointer-events: none;
+      backdrop-filter: blur(10px);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    #toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+    @media (max-width: 560px) { #toast { width: calc(100% - 2.5rem); text-align: center; bottom: 5.5rem; border-radius: 14px; } }
+
     /* ── WA FLOAT ── */
     .wa-float {
       position: fixed;
@@ -1038,8 +1087,68 @@
       #menuBtn { display: flex !important; }
       .footer-grid { grid-template-columns: 1fr !important; }
       .section-wrap { padding: 0 1.25rem; }
-      .nav-brand img { height: 48px; }
-      #navbar.scrolled .nav-brand img { height: 42px; }
+      .nav-brand img { height: 58px; }
+      #navbar.scrolled .nav-brand img { height: 50px; }
+      .nav-brand { gap: 0.6rem; }
+      .nav-brand-name { font-size: 0.95rem; }
+      .nav-brand-sub { display: none; }
+      .nav-brand-ppiu { font-size: 0.52rem; letter-spacing: 0.06em; }
+
+      /* Reduce section padding */
+      section#tentang, section#paket, section#why,
+      section#testimoni, section#galeri, section#oleh,
+      section#kontak { padding: 4.25rem 0 !important; }
+      section#maskapai { padding: 3.25rem 0 !important; }
+      footer { padding: 3rem 0 1.5rem !important; }
+
+      /* Hero tightening */
+      .hero { padding: 6rem 0 2rem; min-height: 85vh; }
+      .hero-content { padding: 0 1rem; }
+      .hero h1 { margin-bottom: 1rem; font-size: clamp(1.55rem, 6.5vw, 2.4rem); letter-spacing: -0.02em; padding: 0 0.25rem; }
+      .hero h1 br { display: none; }
+      .hero-sub { padding: 0 0.5rem; }
+      .hero-badge { font-size: 0.62rem; padding: 0.4rem 0.9rem; letter-spacing: 0.1em; }
+      .hero-sub { font-size: 0.95rem; margin-bottom: 1.8rem; }
+      .hero-cta { gap: 0.6rem; }
+      .hero-cta .btn-gold, .hero-cta .btn-ghost { flex: 1 1 auto; justify-content: center; }
+
+      /* Contact form: single column */
+      .fg { grid-template-columns: 1fr !important; }
+
+      /* Cards breathing room */
+      .about-grid { gap: 3rem !important; }
+      .contact-grid { gap: 2.5rem !important; }
+      .trust-row { padding: 1.1rem 1rem; gap: 1.25rem; justify-content: center; }
+      .trust-divider { display: none; }
+
+      /* Paket card refinement */
+      .paket-body { padding: 1.2rem 1.1rem 1.35rem; }
+      .paket-title { font-size: 1.2rem; }
+
+      /* Testimoni */
+      .testi-slide { width: 240px; height: 340px; }
+
+      /* Oleh-oleh wide tile keeps span of 2 */
+      .oleh-grid { gap: 0.8rem; }
+
+      /* Gallery caption smaller */
+      .gal-title { font-size: 0.95rem; }
+      .gal-caption { padding: 0.85rem 1rem; }
+
+      /* Buttons a bit larger for touch */
+      .btn-gold, .btn-ghost, .btn-dark { padding: 0.85rem 1.35rem; }
+
+      /* WA float & toast avoid overlap */
+      .wa-float { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; }
+    }
+    @media (max-width: 420px) {
+      .nav-brand img { height: 52px; }
+      #navbar.scrolled .nav-brand img { height: 46px; }
+      .nav-brand-text { display: none; }
+      .hero h1 { letter-spacing: -0.03em; }
+      .sec-title { font-size: 1.85rem !important; }
+      .testi-slide { width: 220px; height: 320px; }
+      .hero-cta .btn-gold, .hero-cta .btn-ghost { width: 100%; flex: 0 0 auto; }
     }
 
     /* ── section shells ── */
@@ -1078,7 +1187,7 @@
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#beranda" class="nav-brand">
-      <img src="assets/logosafar.png" alt="Salamah Farhah Tour & Travel">
+      <img src="assets/logo11.png" alt="Salamah Farhah Tour & Travel">
       <div class="nav-brand-text">
         <div class="nav-brand-name">Salamah Farhah</div>
         <div class="nav-brand-sub">Tour &amp; Travel</div>
@@ -1132,7 +1241,7 @@
       Terpercaya · Izin Resmi Kemenag RI
     </div>
 
-    <h1>Perjalanan Suci <em>Menuju</em><br>Baitullah Bersama Kami</h1>
+    <h1>Perjalanan Suci <em>Menuju</em> <br> Baitullah Bersama Kami</h1>
 
     <p class="hero-sub">
       Wujudkan ibadah Haji &amp; Umrah impian Anda dengan pembimbing tersertifikasi,
@@ -1175,15 +1284,10 @@
           Kami berkomitmen memberikan layanan terbaik dengan pembimbing ibadah tersertifikasi, akomodasi premium strategis dekat Masjidil Haram, dan pendampingan menyeluruh dari keberangkatan hingga kepulangan.
         </p>
 
-        <div class="trust-row">
+        <div class="trust-row" style="justify-content:center;">
           <div class="trust-item">
             <img src="assets/kemenag.webp" alt="KEMENAG RI">
             <div class="label">Izin Resmi PPIU</div>
-          </div>
-          <div class="trust-divider"></div>
-          <div class="trust-item">
-            <img src="assets/iata.webp" alt="IATA">
-            <div class="label">Member IATA</div>
           </div>
           <div class="trust-divider"></div>
           <div class="trust-item">
@@ -1225,15 +1329,15 @@
     <div class="paket-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;">
 
       <div class="paket-card reveal d1">
-        <div class="paket-thumb" data-img="assets/syawal1.png" data-title="Umrah Syawal">
-          <img src="assets/syawal1.png" alt="Paket Umrah Syawal">
+        <div class="paket-thumb" data-img="assets/Paket/Regjul.jpeg" data-title="Umrah Syawal">
+          <img src="assets/Paket/Regjul.jpeg" alt="Paket Umrah Syawal">
           <div class="paket-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
         </div>
         <div class="paket-body">
           <div class="paket-tag">Edisi Terbaik</div>
           <div class="paket-title">Umrah Syawal</div>
           <p class="paket-desc">Perjalanan ibadah Umrah spesial bulan Syawal dengan suasana yang tenang setelah Ramadhan, fasilitas premium dekat Masjidil Haram.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Syawal" data-img="assets/syawal1.png">
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Syawal" data-img="assets/Paket/Regjul.jpeg">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1241,15 +1345,15 @@
       </div>
 
       <div class="paket-card reveal d2">
-        <div class="paket-thumb" data-img="assets/ramadhan1.png" data-title="Umrah Ramadhan">
-          <img src="assets/ramadhan1.png" alt="Paket Umrah Ramadhan">
+        <div class="paket-thumb" data-img="assets/Paket/berkahsep.jpeg" data-title="Umrah Ramadhan">
+          <img src="assets/Paket/berkahsep.jpeg" alt="Paket Umrah Ramadhan">
           <div class="paket-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
         </div>
         <div class="paket-body">
           <div class="paket-tag">Paling Dicari</div>
           <div class="paket-title">Umrah Ramadhan</div>
           <p class="paket-desc">Ibadah Umrah di bulan suci dengan pahala berlipat, i'tikaf di Masjidil Haram, buka puasa istimewa, dan jadwal ibadah terstruktur.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Ramadhan" data-img="assets/ramadhan1.png">
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Ramadhan" data-img="assets/Paket/berkahsep.jpeg">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1477,9 +1581,9 @@
 
       <div class="reveal-r" style="position:relative;">
         <div class="oleh-grid">
-          <div class="oleh-tile"><img src="assets/Oleh-Oleh/oleh3.png" alt="Oleh-oleh khas Tanah Suci 1"></div>
-          <div class="oleh-tile"><img src="assets/Oleh-Oleh/oleh4.png" alt="Oleh-oleh khas Tanah Suci 2"></div>
-          <div class="oleh-tile oleh-tile-wide"><img src="assets/Oleh-Oleh/oleh5.png" alt="Oleh-oleh khas Tanah Suci 3"></div>
+          <div class="oleh-tile" data-img="assets/Oleh-Oleh/oleh3.png" data-title="Oleh-oleh Tanah Suci"><img src="assets/Oleh-Oleh/oleh3.png" alt="Oleh-oleh khas Tanah Suci 1"></div>
+          <div class="oleh-tile" data-img="assets/Oleh-Oleh/oleh4.png" data-title="Oleh-oleh Tanah Suci"><img src="assets/Oleh-Oleh/oleh4.png" alt="Oleh-oleh khas Tanah Suci 2"></div>
+          <div class="oleh-tile oleh-tile-wide" data-img="assets/Oleh-Oleh/oleh5.png" data-title="Oleh-oleh Tanah Suci"><img src="assets/Oleh-Oleh/oleh5.png" alt="Oleh-oleh khas Tanah Suci 3"></div>
         </div>
         <div style="position:absolute; inset:-30px; z-index:-1; background:radial-gradient(ellipse at 70% 70%, rgba(245,200,90,0.3), transparent 65%); filter:blur(40px);"></div>
       </div>
@@ -1611,7 +1715,7 @@
     <div class="footer-grid" style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem;">
 
       <div>
-        <img src="assets/logosafar.png" alt="Salamah Farhah Tour & Travel" style="height:50px; margin-bottom:1.1rem; object-fit:contain;">
+        <img src="assets/logo11.png" alt="Salamah Farhah Tour & Travel" style="height:50px; margin-bottom:1.1rem; object-fit:contain;">
         <div style="font-family:'Fraunces', serif; color:#fff; font-size:1.15rem; font-weight:500; letter-spacing:-0.01em;">Salamah Farhah</div>
         <div style="font-size:0.62rem; color:rgba(251,248,241,0.4); letter-spacing:0.2em; text-transform:uppercase; margin-top:2px; margin-bottom:0.8rem;">Tour &amp; Travel</div>
         <p style="font-size:0.84rem; line-height:1.75; color:rgba(251,248,241,0.42); max-width:310px; margin-bottom:1.4rem;">
@@ -1768,7 +1872,7 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
     setTimeout(() => { lbImg.src = ''; lbCap.textContent = ''; }, 400);
   }
 
-  document.querySelectorAll('.gal-item, .paket-thumb').forEach(item => {
+  document.querySelectorAll('.gal-item, .paket-thumb, .oleh-tile').forEach(item => {
     item.addEventListener('click', () => {
       const src = item.dataset.img;
       const title = item.dataset.title || '';
@@ -1788,27 +1892,68 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
   });
 })();
 
-/* ── PAKET: Daftar Sekarang → WhatsApp (auto-download paket image + open chat) ── */
+/* ── PAKET: Daftar Sekarang → copy image to clipboard + open WhatsApp chat ── */
 const WA_NUMBER = '6285747746260';
+
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.setAttribute('role', 'status');
+    t.setAttribute('aria-live', 'polite');
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove('show'), 4800);
+}
+
+/**
+ * Copy paket image to the clipboard so jamaah can paste it in WhatsApp
+ * without any download or Share dialog. Image is converted to PNG
+ * because ClipboardItem only accepts image/png on most browsers.
+ */
+async function copyImageToClipboard(imgPath) {
+  if (!navigator.clipboard || !window.ClipboardItem) return false;
+  const res = await fetch(imgPath);
+  const srcBlob = await res.blob();
+
+  const pngBlob = await new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob(b => b ? resolve(b) : reject(new Error('toBlob failed')), 'image/png');
+    };
+    img.onerror = reject;
+    img.src = URL.createObjectURL(srcBlob);
+  });
+
+  await navigator.clipboard.write([new ClipboardItem({ 'image/png': pngBlob })]);
+  return true;
+}
+
 async function daftarPaket(btn) {
   const paket   = btn.dataset.paket || 'paket pilihan';
   const imgPath = btn.dataset.img  || '';
-  const text    = "Assalamu'alaikum Warahmatullahi Wabarakatuh. Kak, saya mau daftar paket " + paket + " (gambar paket terlampir). Mohon informasinya lebih lanjut. Terima kasih.";
+  const text    = "Assalamu'alaikum Warahmatullahi Wabarakatuh. Kak, saya mau daftar paket " + paket + ". Mohon informasinya lebih lanjut. Terima kasih.";
 
+  let copied = false;
   if (imgPath) {
-    try {
-      const res  = await fetch(imgPath);
-      const blob = await res.blob();
-      const url  = URL.createObjectURL(blob);
-      const a    = document.createElement('a');
-      a.href = url;
-      a.download = paket.replace(/\s+/g, '_') + '.png';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 4000);
-    } catch (_) { /* keep flow even if download fails */ }
+    try { copied = await copyImageToClipboard(imgPath); }
+    catch (_) { copied = false; }
   }
+
+  showToast(copied
+    ? 'Gambar paket tersalin. Tekan paste (Ctrl/Cmd+V) di WhatsApp.'
+    : 'Mengarahkan ke WhatsApp...'
+  );
 
   const waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
   window.open(waUrl, '_blank', 'noopener,noreferrer');

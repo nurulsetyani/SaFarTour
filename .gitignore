@@ -9,6 +9,6 @@ temporary screenshots/
 *.log
 
 # Chrome headless profile dirs
-.c[0-9]*/
+.c*/
 .chrome-*/
 
