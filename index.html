@@ -1918,15 +1918,11 @@ function showToast(msg) {
   t._h = setTimeout(() => t.classList.remove('show'), 4800);
 }
 
-async function fetchAsFile(imgPath, niceName) {
-  const res  = await fetch(imgPath);
-  const blob = await res.blob();
-  const type = blob.type || 'image/jpeg';
-  const ext  = type.includes('png') ? 'png' : (type.includes('jpeg') || type.includes('jpg') ? 'jpg' : 'img');
-  const fname = niceName.replace(/\s+/g, '_') + '.' + ext;
-  return new File([blob], fname, { type });
-}
-
+/**
+ * Copy the paket image to the clipboard as PNG, so the jamaah can paste
+ * it (Ctrl/Cmd+V) in the WhatsApp chat that opens next. Works on
+ * Chrome/Edge desktop and recent Chrome Android.
+ */
 async function copyImageToClipboard(imgPath) {
   if (!navigator.clipboard || !window.ClipboardItem) return false;
   const res = await fetch(imgPath);
@@ -1953,28 +1949,16 @@ async function daftarPaket(btn) {
   const imgPath = btn.dataset.img  || '';
   const text    = "Assalamu'alaikum Warahmatullahi Wabarakatuh. Kak, saya mau daftar paket " + paket + ". Mohon informasinya lebih lanjut. Terima kasih.";
 
-  // Preferred path: Web Share API — user picks WhatsApp and both image & text are attached.
-  if (imgPath && navigator.share && navigator.canShare) {
-    try {
-      const file = await fetchAsFile(imgPath, paket);
-      if (navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], text, title: 'Daftar Paket ' + paket });
-        return;
-      }
-    } catch (err) {
-      if (err && err.name === 'AbortError') return;
-    }
-  }
-
-  // Fallback: copy image to clipboard (desktop Chrome/Edge) + open WA chat with text.
+  // Copy the paket image onto the clipboard so it's ready to paste in WA.
   let copied = false;
   if (imgPath) {
     try { copied = await copyImageToClipboard(imgPath); } catch (_) {}
   }
   showToast(copied
-    ? 'Gambar paket tersalin. Tekan paste (Ctrl/Cmd+V) di WhatsApp untuk melampirkan.'
+    ? 'Gambar paket tersalin. Tekan paste (Ctrl/Cmd+V) di WhatsApp.'
     : 'Mengarahkan ke WhatsApp...');
 
+  // Direct message to wa.me/6285747746260 with the greeting pre-filled.
   const waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
   window.open(waUrl, '_blank', 'noopener,noreferrer');
 }
