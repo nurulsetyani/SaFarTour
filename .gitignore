@@ -7,3 +7,8 @@ ss_tmp*.png
 ss_direct.png
 temporary screenshots/
 *.log
+
+# Chrome headless profile dirs
+.c[0-9]*/
+.chrome-*/
+

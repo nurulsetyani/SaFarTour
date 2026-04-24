@@ -115,13 +115,14 @@
       justify-content: space-between;
       gap: 1.5rem;
     }
-    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; flex-shrink: 0; }
-    .nav-brand img { height: 44px; object-fit: contain; }
-    .nav-brand-text { line-height: 1.1; }
+    .nav-brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; flex-shrink: 0; }
+    .nav-brand img { height: 64px; object-fit: contain; transition: height 0.35s ease; }
+    #navbar.scrolled .nav-brand img { height: 54px; }
+    .nav-brand-text { line-height: 1.15; }
     .nav-brand-name {
       font-family: 'Fraunces', serif;
       color: var(--ink);
-      font-size: 1.08rem;
+      font-size: 1.18rem;
       font-weight: 500;
       letter-spacing: -0.01em;
     }
@@ -409,6 +410,25 @@
         0 2px 4px rgba(20,16,11,0.04),
         0 18px 44px -22px rgba(20,16,11,0.14);
     }
+
+    /* ── AIRLINE ITEM ── */
+    .airline-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 2.5rem;
+      flex-shrink: 0;
+    }
+    .airline-item img {
+      height: 42px;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+      opacity: 0.72;
+      filter: grayscale(15%);
+      transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+    .airline-item:hover img { opacity: 1; filter: grayscale(0%); }
 
     /* ── MARQUEE (airlines + testi) ── */
     .marquee-wrap { overflow: hidden; position: relative; }
@@ -815,6 +835,10 @@
         0 22px 50px -28px rgba(20,16,11,0.25);
       transition: transform 0.4s cubic-bezier(0.25,1,0.5,1);
     }
+    .oleh-tile.oleh-tile-wide {
+      grid-column: span 2;
+      aspect-ratio: 2/1;
+    }
     .oleh-tile:hover { transform: translateY(-4px) rotate(-0.4deg); }
     .oleh-tile:nth-child(2n):hover { transform: translateY(-4px) rotate(0.4deg); }
     .oleh-tile img {
@@ -830,7 +854,10 @@
       border: 1px solid rgba(200,134,10,0.18);
       border-radius: 20px;
     }
-    @media (max-width: 560px) { .oleh-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; } }
+    @media (max-width: 560px) {
+      .oleh-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+      .oleh-tile.oleh-tile-wide { grid-column: span 1; aspect-ratio: 1/1; }
+    }
 
     /* ── PROMO CARD (pendaftar pertama) ── */
     .promo-pendaftar {
@@ -993,12 +1020,15 @@
     @media (max-width: 1024px) {
       .about-grid { grid-template-columns: 1fr !important; }
       .paket-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      .why-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .why-grid { grid-template-columns: repeat(3, 1fr) !important; }
       .contact-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 720px) {
       .footer-grid { grid-template-columns: 1fr 1fr !important; }
       .paket-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
+      .why-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 520px) {
       .why-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 640px) {
@@ -1008,7 +1038,8 @@
       #menuBtn { display: flex !important; }
       .footer-grid { grid-template-columns: 1fr !important; }
       .section-wrap { padding: 0 1.25rem; }
-      .nav-brand img { height: 38px; }
+      .nav-brand img { height: 48px; }
+      #navbar.scrolled .nav-brand img { height: 42px; }
     }
 
     /* ── section shells ── */
@@ -1194,15 +1225,15 @@
     <div class="paket-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;">
 
       <div class="paket-card reveal d1">
-        <div class="paket-thumb" data-img="assets/Paket/syawal.png" data-title="Umrah Syawal">
-          <img src="assets/Paket/syawal.png" alt="Paket Umrah Syawal">
+        <div class="paket-thumb" data-img="assets/syawal1.png" data-title="Umrah Syawal">
+          <img src="assets/syawal1.png" alt="Paket Umrah Syawal">
           <div class="paket-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
         </div>
         <div class="paket-body">
           <div class="paket-tag">Edisi Terbaik</div>
           <div class="paket-title">Umrah Syawal</div>
           <p class="paket-desc">Perjalanan ibadah Umrah spesial bulan Syawal dengan suasana yang tenang setelah Ramadhan, fasilitas premium dekat Masjidil Haram.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Syawal" data-img="syawal.png">
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Syawal" data-img="assets/syawal1.png">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1210,15 +1241,15 @@
       </div>
 
       <div class="paket-card reveal d2">
-        <div class="paket-thumb" data-img="assets/Paket/ramadhan.png" data-title="Umrah Ramadhan">
-          <img src="assets/Paket/ramadhan.png" alt="Paket Umrah Ramadhan">
+        <div class="paket-thumb" data-img="assets/ramadhan1.png" data-title="Umrah Ramadhan">
+          <img src="assets/ramadhan1.png" alt="Paket Umrah Ramadhan">
           <div class="paket-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
         </div>
         <div class="paket-body">
           <div class="paket-tag">Paling Dicari</div>
           <div class="paket-title">Umrah Ramadhan</div>
           <p class="paket-desc">Ibadah Umrah di bulan suci dengan pahala berlipat, i'tikaf di Masjidil Haram, buka puasa istimewa, dan jadwal ibadah terstruktur.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Ramadhan" data-img="ramadhan.png">
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Ramadhan" data-img="assets/ramadhan1.png">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1234,7 +1265,7 @@
           <div class="paket-tag">Eksklusif</div>
           <div class="paket-title">Umrah Private</div>
           <p class="paket-desc">Paket Umrah privat untuk keluarga atau kelompok terbatas. Jadwal fleksibel, pembimbing personal, dan pengalaman ibadah yang khusyuk.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Private" data-img="private.png">
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Private" data-img="assets/Paket/private.png">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1250,7 +1281,7 @@
           <div class="paket-tag">Umrah Plus</div>
           <div class="paket-title">Umrah Plus Dubai</div>
           <p class="paket-desc">Gabungan ibadah Umrah dan wisata modern ke Dubai. Burj Khalifa, Desert Safari, dan landmark ikonik dalam satu perjalanan berkesan.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Plus Dubai" data-img="dubai.png">
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Plus Dubai" data-img="assets/Paket/dubai.png">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1275,38 +1306,46 @@
       </p>
     </div>
 
-    <div class="why-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem;">
+    <div class="why-grid" style="display:grid; grid-template-columns:repeat(5,1fr); gap:1.1rem;">
 
       <div class="why-card reveal d1">
         <div class="why-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
         </div>
-        <h4 style="font-size:1.2rem; font-weight:500; color:var(--ink); margin-bottom:0.6rem; letter-spacing:-0.01em;">Izin Resmi Kemenag</h4>
-        <p style="font-size:0.86rem; line-height:1.7; color:var(--muted);">PPIU resmi dengan izin sah Kementerian Agama RI. No. PPIU 27062200296520002.</p>
+        <h4 style="font-size:1.15rem; font-weight:500; color:var(--ink); margin-bottom:0.55rem; letter-spacing:-0.01em;">Izin Resmi Kemenag</h4>
+        <p style="font-size:0.84rem; line-height:1.65; color:var(--muted);">PPIU resmi dengan izin sah Kementerian Agama RI. No. PPIU 27062200296520002.</p>
       </div>
 
       <div class="why-card reveal d2">
         <div class="why-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
         </div>
-        <h4 style="font-size:1.2rem; font-weight:500; color:var(--ink); margin-bottom:0.6rem; letter-spacing:-0.01em;">Pembimbing Bersertifikat</h4>
-        <p style="font-size:0.86rem; line-height:1.7; color:var(--muted);">Tim ustadz berpengalaman mendampingi jamaah agar ibadah berlangsung benar dan khusyuk.</p>
+        <h4 style="font-size:1.15rem; font-weight:500; color:var(--ink); margin-bottom:0.55rem; letter-spacing:-0.01em;">Pembimbing Bersertifikat</h4>
+        <p style="font-size:0.84rem; line-height:1.65; color:var(--muted);">Tim ustadz berpengalaman mendampingi jamaah agar ibadah berlangsung benar dan khusyuk.</p>
       </div>
 
       <div class="why-card reveal d3">
         <div class="why-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        <h4 style="font-size:1.2rem; font-weight:500; color:var(--ink); margin-bottom:0.6rem; letter-spacing:-0.01em;">Akomodasi Strategis</h4>
-        <p style="font-size:0.86rem; line-height:1.7; color:var(--muted);">Hotel premium berlokasi dekat Masjidil Haram &amp; Masjid Nabawi untuk kenyamanan ibadah.</p>
+        <h4 style="font-size:1.15rem; font-weight:500; color:var(--ink); margin-bottom:0.55rem; letter-spacing:-0.01em;">Akomodasi Strategis</h4>
+        <p style="font-size:0.84rem; line-height:1.65; color:var(--muted);">Hotel premium berlokasi dekat Masjidil Haram &amp; Masjid Nabawi untuk kenyamanan ibadah.</p>
       </div>
 
       <div class="why-card reveal d4">
         <div class="why-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
-        <h4 style="font-size:1.2rem; font-weight:500; color:var(--ink); margin-bottom:0.6rem; letter-spacing:-0.01em;">Pendampingan 24 Jam</h4>
-        <p style="font-size:0.86rem; line-height:1.7; color:var(--muted);">Tim kami siap mendampingi dan melayani setiap kebutuhan jamaah selama di Tanah Suci.</p>
+        <h4 style="font-size:1.15rem; font-weight:500; color:var(--ink); margin-bottom:0.55rem; letter-spacing:-0.01em;">Pendampingan 24 Jam</h4>
+        <p style="font-size:0.84rem; line-height:1.65; color:var(--muted);">Tim kami siap mendampingi dan melayani setiap kebutuhan jamaah selama di Tanah Suci.</p>
+      </div>
+
+      <div class="why-card reveal d5">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h4 style="font-size:1.15rem; font-weight:500; color:var(--ink); margin-bottom:0.55rem; letter-spacing:-0.01em;">Harga Terjangkau</h4>
+        <p style="font-size:0.84rem; line-height:1.65; color:var(--muted);">Paket ibadah dengan harga yang kompetitif tanpa mengorbankan kualitas layanan dan kenyamanan.</p>
       </div>
 
     </div>
@@ -1430,7 +1469,7 @@
           </p>
         </div>
 
-        <a href="https://wa.me/6285747746260?text=Assalamu'alaikum%20Warahmatullahi%20Wabarakatuh.%20Kak%2C%20saya%20ingin%20pesan%20oleh-oleh%20dari%20Tanah%20Suci." target="_blank" rel="noopener noreferrer" class="btn-dark">
+        <a href="https://wa.me/6285268443442?text=Assalamu'alaikum%20Warahmatullahi%20Wabarakatuh.%20Kak%2C%20saya%20ingin%20pesan%20oleh-oleh%20dari%20Tanah%20Suci." target="_blank" rel="noopener noreferrer" class="btn-dark">
             Pesan Oleh-Oleh via WhatsApp
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1438,10 +1477,9 @@
 
       <div class="reveal-r" style="position:relative;">
         <div class="oleh-grid">
-          <div class="oleh-tile"><img src="assets/Oleh-Oleh/oleh1.png" alt="Oleh-oleh khas Tanah Suci 1"></div>
-          <div class="oleh-tile"><img src="assets/Oleh-Oleh/oleh2.png" alt="Oleh-oleh khas Tanah Suci 2"></div>
-          <div class="oleh-tile"><img src="assets/Oleh-Oleh/oleh3.png" alt="Oleh-oleh khas Tanah Suci 3"></div>
-          <div class="oleh-tile"><img src="assets/Oleh-Oleh/oleh4.png" alt="Oleh-oleh khas Tanah Suci 4"></div>
+          <div class="oleh-tile"><img src="assets/Oleh-Oleh/oleh3.png" alt="Oleh-oleh khas Tanah Suci 1"></div>
+          <div class="oleh-tile"><img src="assets/Oleh-Oleh/oleh4.png" alt="Oleh-oleh khas Tanah Suci 2"></div>
+          <div class="oleh-tile oleh-tile-wide"><img src="assets/Oleh-Oleh/oleh5.png" alt="Oleh-oleh khas Tanah Suci 3"></div>
         </div>
         <div style="position:absolute; inset:-30px; z-index:-1; background:radial-gradient(ellipse at 70% 70%, rgba(245,200,90,0.3), transparent 65%); filter:blur(40px);"></div>
       </div>
@@ -1542,18 +1580,26 @@
     <div class="marquee-fade-l" style="background:linear-gradient(to right, var(--bg), transparent);"></div>
     <div class="marquee-fade-r" style="background:linear-gradient(to left, var(--bg), transparent); right:0;"></div>
     <div class="marquee-track" role="list" aria-label="Maskapai penerbangan mitra">
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem"><img src="assets/emirats.png"  alt="Emirates"         style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem"><img src="assets/etihad.png"   alt="Etihad Airways"   style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem"><img src="assets/garuda.png"   alt="Garuda Indonesia" style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem"><img src="assets/lion.png"     alt="Lion Air"         style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem"><img src="assets/qatar.png"    alt="Qatar Airways"    style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem"><img src="assets/turkish.png"  alt="Turkish Airlines" style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem" aria-hidden="true"><img src="assets/emirats.png"  alt="" style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem" aria-hidden="true"><img src="assets/etihad.png"   alt="" style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem" aria-hidden="true"><img src="assets/garuda.png"   alt="" style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem" aria-hidden="true"><img src="assets/lion.png"     alt="" style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem" aria-hidden="true"><img src="assets/qatar.png"    alt="" style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
-      <div style="display:flex; align-items:center; justify-content:center; padding:0.75rem 3rem; flex-shrink:0;" role="listitem" aria-hidden="true"><img src="assets/turkish.png"  alt="" style="height:36px; opacity:0.72; filter:grayscale(15%);"></div>
+      <div class="airline-item" role="listitem"><img src="assets/emirats.png"  alt="Emirates"></div>
+      <div class="airline-item" role="listitem"><img src="assets/etihad.png"   alt="Etihad Airways"></div>
+      <div class="airline-item" role="listitem"><img src="assets/garuda.png"   alt="Garuda Indonesia"></div>
+      <div class="airline-item" role="listitem"><img src="assets/saudi.png"    alt="Saudia"></div>
+      <div class="airline-item" role="listitem"><img src="assets/oman.png"     alt="Oman Air"></div>
+      <div class="airline-item" role="listitem"><img src="assets/lion.png"     alt="Lion Air"></div>
+      <div class="airline-item" role="listitem"><img src="assets/qatar.png"    alt="Qatar Airways"></div>
+      <div class="airline-item" role="listitem"><img src="assets/turkish.png"  alt="Turkish Airlines"></div>
+      <div class="airline-item" role="listitem"><img src="assets/indigo.png"   alt="IndiGo"></div>
+      <div class="airline-item" role="listitem"><img src="assets/batik1.png"   alt="Batik Air"></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/emirats.png"  alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/etihad.png"   alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/garuda.png"   alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/saudi.png"    alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/oman.png"     alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/lion.png"     alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/qatar.png"    alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/turkish.png"  alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/indigo.png"   alt=""></div>
+      <div class="airline-item" role="listitem" aria-hidden="true"><img src="assets/batik1.png"   alt=""></div>
     </div>
   </div>
 </section>
@@ -1742,33 +1788,30 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
   });
 })();
 
-/* ── PAKET: Daftar Sekarang → WhatsApp (with image attach if supported) ── */
+/* ── PAKET: Daftar Sekarang → WhatsApp (auto-download paket image + open chat) ── */
 const WA_NUMBER = '6285747746260';
 async function daftarPaket(btn) {
   const paket   = btn.dataset.paket || 'paket pilihan';
-  const imgFile = btn.dataset.img || '';
-  const text    = "Assalamu'alaikum Warahmatullahi Wabarakatuh. Kak, saya mau daftar paket " + paket + ". Mohon informasinya lebih lanjut. Terima kasih.";
+  const imgPath = btn.dataset.img  || '';
+  const text    = "Assalamu'alaikum Warahmatullahi Wabarakatuh. Kak, saya mau daftar paket " + paket + " (gambar paket terlampir). Mohon informasinya lebih lanjut. Terima kasih.";
 
-  if (imgFile && navigator.share && navigator.canShare) {
+  if (imgPath) {
     try {
-      const res  = await fetch('assets/Paket/' + imgFile);
+      const res  = await fetch(imgPath);
       const blob = await res.blob();
-      const file = new File([blob], imgFile, { type: blob.type || 'image/png' });
-      if (navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          text : text,
-          title: 'Daftar Paket ' + paket,
-        });
-        return;
-      }
-    } catch (err) {
-      if (err && err.name === 'AbortError') return;
-    }
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href = url;
+      a.download = paket.replace(/\s+/g, '_') + '.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+    } catch (_) { /* keep flow even if download fails */ }
   }
 
-  const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
-  window.open(url, '_blank', 'noopener,noreferrer');
+  const waUrl = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
+  window.open(waUrl, '_blank', 'noopener,noreferrer');
 }
 document.querySelectorAll('.daftar-btn').forEach(btn => {
   btn.addEventListener('click', (e) => { e.preventDefault(); daftarPaket(btn); });
