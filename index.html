@@ -121,8 +121,8 @@
       gap: 1.5rem;
     }
     .nav-brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; flex-shrink: 0; }
-    .nav-brand img { height: 64px; object-fit: contain; transition: height 0.35s ease; }
-    #navbar.scrolled .nav-brand img { height: 54px; }
+    .nav-brand img { height: 84px; object-fit: contain; transition: height 0.35s ease; }
+    #navbar.scrolled .nav-brand img { height: 72px; }
     .nav-brand-text { line-height: 1.15; }
     .nav-brand-name {
       font-family: 'Fraunces', serif;
@@ -604,6 +604,59 @@
       margin-bottom: 1.15rem;
     }
 
+    /* ── WHY images (klik untuk lihat detail) ── */
+    .why-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .why-img {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: zoom-in;
+      border: 1px solid var(--hairline);
+      box-shadow: 0 22px 50px -24px rgba(20,16,11,0.25), 0 4px 14px rgba(20,16,11,0.06);
+      transition: transform 0.45s cubic-bezier(0.25,1,0.5,1), box-shadow 0.45s ease, border-color 0.35s ease;
+      background: var(--surface);
+      aspect-ratio: 4 / 5;
+    }
+    .why-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25,1,0.5,1);
+    }
+    .why-img:hover {
+      transform: translateY(-5px);
+      border-color: var(--hairline-gold);
+      box-shadow: 0 32px 64px -22px rgba(20,16,11,0.32), 0 6px 18px rgba(200,134,10,0.12);
+    }
+    .why-img:hover img { transform: scale(1.045); }
+    .why-img:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+    .why-img-zoom {
+      position: absolute;
+      top: 0.9rem; right: 0.9rem;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(251,248,241,0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--maroon);
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.25,1,0.5,1);
+      box-shadow: 0 6px 14px rgba(20,16,11,0.18);
+    }
+    .why-img:hover .why-img-zoom { opacity: 1; transform: translateY(0); }
+
     /* ── TESTI DRAG CAROUSEL ── */
     .testi-stage {
       position: relative;
@@ -1076,6 +1129,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr !important; }
       .paket-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
       .why-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .why-imgs { grid-template-columns: 1fr !important; max-width: 420px; }
     }
     @media (max-width: 520px) {
       .why-grid { grid-template-columns: 1fr !important; }
@@ -1087,8 +1141,8 @@
       #menuBtn { display: flex !important; }
       .footer-grid { grid-template-columns: 1fr !important; }
       .section-wrap { padding: 0 1.25rem; }
-      .nav-brand img { height: 52px; }
-      #navbar.scrolled .nav-brand img { height: 46px; }
+      .nav-brand img { height: 64px; }
+      #navbar.scrolled .nav-brand img { height: 56px; }
       .nav-brand { gap: 0.55rem; }
       .nav-brand-name { font-size: 0.82rem; letter-spacing: -0.005em; }
       .nav-brand-sub { font-size: 0.5rem; letter-spacing: 0.12em; }
@@ -1142,8 +1196,8 @@
       .wa-float { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; }
     }
     @media (max-width: 420px) {
-      .nav-brand img { height: 46px; }
-      #navbar.scrolled .nav-brand img { height: 40px; }
+      .nav-brand img { height: 58px; }
+      #navbar.scrolled .nav-brand img { height: 50px; }
       .nav-brand { gap: 0.45rem; }
       .nav-brand-name { font-size: 0.76rem; }
       .nav-brand-sub { font-size: 0.46rem; }
@@ -1154,7 +1208,7 @@
       .hero-cta .btn-gold, .hero-cta .btn-ghost { width: 100%; flex: 0 0 auto; }
     }
     @media (max-width: 360px) {
-      .nav-brand img { height: 42px; }
+      .nav-brand img { height: 52px; }
       .nav-brand-name { font-size: 0.72rem; }
       .nav-brand-ppiu { font-size: 0.4rem; letter-spacing: 0.02em; }
     }
@@ -1252,7 +1306,7 @@
     <h1>Perjalanan Suci <em>Menuju</em> <br> Baitullah Bersama Kami</h1>
 
     <p class="hero-sub">
-      Wujudkan ibadah Haji &amp; Umrah impian Anda dengan pembimbing tersertifikasi,
+      Wujudkan ibadah Umrah impian Anda dengan pembimbing tersertifikasi,
       akomodasi premium strategis dekat Masjidil Haram, dan pendampingan menyeluruh.
     </p>
 
@@ -1337,15 +1391,15 @@
     <div class="paket-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;">
 
       <div class="paket-card reveal d1">
-        <div class="paket-thumb" data-img="assets/Paket/Regjul.jpeg" data-title="Umrah Reguler">
-          <img src="assets/Paket/Regjul.jpeg" alt="Paket Umrah Reguler">
+        <div class="paket-thumb" data-img="assets/Paket/umreg11.png" data-title="Umrah Reguler">
+          <img src="assets/Paket/umreg11.png" alt="Paket Umrah Reguler">
           <div class="paket-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
         </div>
         <div class="paket-body">
           <div class="paket-tag">Edisi Terbaik</div>
           <div class="paket-title">Umrah Reguler</div>
-          <p class="paket-desc">Perjalanan ibadah Umrah spesial bulan Syawal dengan suasana yang tenang setelah Ramadhan, fasilitas premium dekat Masjidil Haram.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Reguler" data-img="assets/Paket/Regjul.jpeg">
+          <p class="paket-desc">Perjalanan ibadah yang nyaman dan penuh ketenangan. Nikmati momen mendekat kepada Allah dengan fasilitas terbaik dan lokasi strategis dekat Masjidil Haram &amp; Nabawi.</p>
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Reguler" data-img="assets/Paket/umreg11.png">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1353,15 +1407,15 @@
       </div>
 
       <div class="paket-card reveal d2">
-        <div class="paket-thumb" data-img="assets/Paket/berkahsep.jpeg" data-title="Umrah Promo Berkah">
-          <img src="assets/Paket/berkahsep.jpeg" alt="Paket Umrah Promo Berkah">
+        <div class="paket-thumb" data-img="assets/Paket/umprom11.png" data-title="Umrah Promo Berkah">
+          <img src="assets/Paket/umprom11.png" alt="Paket Umrah Promo Berkah">
           <div class="paket-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
         </div>
         <div class="paket-body">
           <div class="paket-tag">Paling Dicari</div>
           <div class="paket-title">Umrah Promo Berkah</div>
-          <p class="paket-desc">Ibadah Umrah di bulan suci dengan pahala berlipat, i'tikaf di Masjidil Haram, buka puasa istimewa, dan jadwal ibadah terstruktur.</p>
-          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Promo Berkah" data-img="assets/Paket/berkahsep.jpeg">
+          <p class="paket-desc">Kesempatan istimewa meraih pahala berlipat dengan biaya lebih hemat. Fasilitas lengkap, perjalanan nyaman, dan ibadah lebih khusyuk.</p>
+          <a href="#" class="btn-gold daftar-btn" data-paket="Umrah Promo Berkah" data-img="assets/Paket/umprom11.png">
             Daftar Sekarang
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1414,11 +1468,11 @@
         Kepercayaan Ribuan<br>Jamaah <em>Berbicara</em>
       </h2>
       <p class="reveal" style="margin-top:1rem; color:var(--muted); line-height:1.75; font-size:0.95rem;">
-        Empat komitmen utama yang menjadikan setiap perjalanan ibadah Anda tenang, terencana, dan bermakna.
+        Enam komitmen utama yang menjadikan setiap perjalanan ibadah Anda tenang, terencana, dan bermakna.
       </p>
     </div>
 
-    <div class="why-grid" style="display:grid; grid-template-columns:repeat(5,1fr); gap:1.1rem;">
+    <div class="why-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem;">
 
       <div class="why-card reveal d1">
         <div class="why-icon">
@@ -1460,6 +1514,25 @@
         <p style="font-size:0.84rem; line-height:1.65; color:var(--muted);">Paket ibadah dengan harga yang kompetitif tanpa mengorbankan kualitas layanan dan kenyamanan.</p>
       </div>
 
+      <div class="why-card reveal d5">
+        <div class="why-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="m8 15 2 2 4-4"/></svg>
+        </div>
+        <h4 style="font-size:1.15rem; font-weight:500; color:var(--ink); margin-bottom:0.55rem; letter-spacing:-0.01em;">Provider Visa Resmi</h4>
+        <p style="font-size:0.84rem; line-height:1.65; color:var(--muted);">Salamah Farhah Tour terdaftar sebagai external agent resmi yang dapat menerbitkan visa secara langsung, sehingga proses lebih cepat, aman, dan memastikan keberangkatan Anda.</p>
+      </div>
+
+    </div>
+
+    <div class="why-imgs">
+      <div class="why-img reveal" data-img="assets/Galery/why/why1.png" data-title="Penghargaan & Apresiasi">
+        <img src="assets/Galery/why/why1.png" alt="Penghargaan dari Saudi untuk layanan visa Umrah">
+        <div class="why-img-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
+      </div>
+      <div class="why-img reveal d1" data-img="assets/Galery/why/why2.jpeg" data-title="Mitra Saudi Terpercaya">
+        <img src="assets/Galery/why/why2.jpeg" alt="Penghargaan resmi dari mitra Saudi">
+        <div class="why-img-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1537,13 +1610,13 @@
         <img src="assets/Galery/Kereta%20Gantung%20-%20Thaif.png" alt="Kereta Gantung - Thaif">
         <div class="gal-caption"><div class="gal-title">Kereta Gantung - Thaif</div></div>
       </div>
-      <div class="gal-item gal-s-6 reveal d2" data-img="assets/Galery/Tour%20Dubai.png" data-title="Tour Dubai">
-        <img src="assets/Galery/Tour%20Dubai.png" alt="Tour Dubai">
-        <div class="gal-caption"><div class="gal-title">Tour Dubai</div></div>
+      <div class="gal-item gal-s-6 reveal d2" data-img="assets/Galery/Red%20Sea%20-%20Yanbu%20City.png" data-title="Red Sea - Yanbu City">
+        <img src="assets/Galery/Red%20Sea%20-%20Yanbu%20City.png" alt="Red Sea - Yanbu City">
+        <div class="gal-caption"><div class="gal-title">Red Sea - Yanbu City</div></div>
       </div>
-      <div class="gal-item gal-s-7 reveal" data-img="assets/Galery/Lahbab%20Desert%20-%20Dubai.png" data-title="Lahbab Desert - Dubai">
-        <img src="assets/Galery/Lahbab%20Desert%20-%20Dubai.png" alt="Lahbab Desert - Dubai">
-        <div class="gal-caption"><div class="gal-title">Lahbab Desert - Dubai</div></div>
+      <div class="gal-item gal-s-7 reveal" data-img="assets/Galery/Jabal%20Malaikat%20-%20Badar%20City.png" data-title="Jabal Malaikat - Badar City">
+        <img src="assets/Galery/Jabal%20Malaikat%20-%20Badar%20City.png" alt="Jabal Malaikat - Badar City">
+        <div class="gal-caption"><div class="gal-title">Jabal Malaikat - Badar City</div></div>
       </div>
     </div>
   </div>
@@ -1775,7 +1848,7 @@
           </div>
           <div>
             <div style="font-size:0.62rem; letter-spacing:0.16em; text-transform:uppercase; color:rgba(251,248,241,0.35); margin-bottom:0.2rem;">Terdaftar</div>
-            <div style="font-size:0.82rem; color:rgba(251,248,241,0.6);">Kemenag RI · IATA · ASPHIRASI</div>
+            <div style="font-size:0.82rem; color:rgba(251,248,241,0.6);">Kemenag RI · ASPHIRASI</div>
           </div>
         </div>
       </div>
@@ -1880,7 +1953,7 @@ document.getElementById('copyrightYear').textContent = new Date().getFullYear();
     setTimeout(() => { lbImg.src = ''; lbCap.textContent = ''; }, 400);
   }
 
-  document.querySelectorAll('.gal-item, .paket-thumb, .oleh-tile').forEach(item => {
+  document.querySelectorAll('.gal-item, .paket-thumb, .oleh-tile, .why-img').forEach(item => {
     item.addEventListener('click', () => {
       const src = item.dataset.img;
       const title = item.dataset.title || '';
