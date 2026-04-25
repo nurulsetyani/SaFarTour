@@ -99,7 +99,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 500;
-      padding: 1.1rem 2rem;
+      padding: 0.6rem 2rem;
       transition: background 0.4s ease, padding 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
       background: rgba(251,248,241,0.55);
       backdrop-filter: blur(18px) saturate(140%);
@@ -107,7 +107,7 @@
       border-bottom: 1px solid transparent;
     }
     #navbar.scrolled {
-      padding: 0.8rem 2rem;
+      padding: 0.45rem 2rem;
       background: rgba(251,248,241,0.82);
       border-bottom-color: var(--hairline);
       box-shadow: 0 10px 40px -18px rgba(20,16,11,0.12);
@@ -121,8 +121,8 @@
       gap: 1.5rem;
     }
     .nav-brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; flex-shrink: 0; }
-    .nav-brand img { height: 84px; object-fit: contain; transition: height 0.35s ease, margin 0.35s ease; margin: -10px 0; }
-    #navbar.scrolled .nav-brand img { height: 72px; margin: -9px 0; }
+    .nav-brand img { height: 84px; object-fit: contain; transition: height 0.35s ease, margin 0.35s ease; margin: -16px 0; }
+    #navbar.scrolled .nav-brand img { height: 72px; margin: -13px 0; }
     .nav-brand-text { line-height: 1.15; }
     .nav-brand-name {
       font-family: 'Fraunces', serif;
@@ -1135,14 +1135,14 @@
       .why-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 640px) {
-      #navbar { padding: 1rem 1.25rem; }
-      #navbar.scrolled { padding: 0.7rem 1.25rem; }
+      #navbar { padding: 0.55rem 1.25rem; }
+      #navbar.scrolled { padding: 0.4rem 1.25rem; }
       #navbar .nav-links { display: none; }
       #menuBtn { display: flex !important; }
       .footer-grid { grid-template-columns: 1fr !important; }
       .section-wrap { padding: 0 1.25rem; }
-      .nav-brand img { height: 64px; margin: -6px 0; }
-      #navbar.scrolled .nav-brand img { height: 56px; margin: -5px 0; }
+      .nav-brand img { height: 64px; margin: -11px 0; }
+      #navbar.scrolled .nav-brand img { height: 56px; margin: -9px 0; }
       .nav-brand { gap: 0.55rem; }
       .nav-brand-name { font-size: 0.82rem; letter-spacing: -0.005em; }
       .nav-brand-sub { font-size: 0.5rem; letter-spacing: 0.12em; }
@@ -1196,8 +1196,8 @@
       .wa-float { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; }
     }
     @media (max-width: 420px) {
-      .nav-brand img { height: 58px; margin: -6px 0; }
-      #navbar.scrolled .nav-brand img { height: 50px; margin: -5px 0; }
+      .nav-brand img { height: 58px; margin: -11px 0; }
+      #navbar.scrolled .nav-brand img { height: 50px; margin: -9px 0; }
       .nav-brand { gap: 0.45rem; }
       .nav-brand-name { font-size: 0.76rem; }
       .nav-brand-sub { font-size: 0.46rem; }
@@ -1208,7 +1208,7 @@
       .hero-cta .btn-gold, .hero-cta .btn-ghost { width: 100%; flex: 0 0 auto; }
     }
     @media (max-width: 360px) {
-      .nav-brand img { height: 52px; margin: -5px 0; }
+      .nav-brand img { height: 52px; margin: -10px 0; }
       .nav-brand-name { font-size: 0.72rem; }
       .nav-brand-ppiu { font-size: 0.4rem; letter-spacing: 0.02em; }
     }
@@ -1525,12 +1525,12 @@
     </div>
 
     <div class="why-imgs">
-      <div class="why-img reveal" data-img="assets/Galery/why/why1.png" data-title="Penghargaan & Apresiasi">
-        <img src="assets/Galery/why/why1.png" alt="Penghargaan dari Saudi untuk layanan visa Umrah">
+      <div class="why-img reveal" data-img="assets/Galery/why/why1.png" data-title="Mitra Saudi Terpercaya">
+        <img src="assets/Galery/why/why1.png" alt="Mitra Saudi Terpercaya">
         <div class="why-img-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
       </div>
-      <div class="why-img reveal d1" data-img="assets/Galery/why/why2.jpeg" data-title="Mitra Saudi Terpercaya">
-        <img src="assets/Galery/why/why2.jpeg" alt="Penghargaan resmi dari mitra Saudi">
+      <div class="why-img reveal d1" data-img="assets/Galery/why/why2.jpeg" data-title="Penghargaan & Apresiasi">
+        <img src="assets/Galery/why/why2.jpeg" alt="Penghargaan & Apresiasi dari Saudi">
         <div class="why-img-zoom"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/><path d="M8 11h6M11 8v6"/></svg></div>
       </div>
     </div>
@@ -1796,7 +1796,7 @@
     <div class="footer-grid" style="display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem;">
 
       <div>
-        <img src="assets/logo11.png" alt="Salamah Farhah Tour & Travel" style="height:50px; margin-bottom:1.1rem; object-fit:contain;">
+        <img src="assets/logo11.png" alt="Salamah Farhah Tour & Travel" style="height:96px; margin:-0.4rem 0 1rem -0.4rem; object-fit:contain;">
         <div style="font-family:'Fraunces', serif; color:#fff; font-size:1.15rem; font-weight:500; letter-spacing:-0.01em;">Salamah Farhah</div>
         <div style="font-size:0.62rem; color:rgba(251,248,241,0.4); letter-spacing:0.2em; text-transform:uppercase; margin-top:2px; margin-bottom:0.8rem;">Tour &amp; Travel</div>
         <p style="font-size:0.84rem; line-height:1.75; color:rgba(251,248,241,0.42); max-width:310px; margin-bottom:1.4rem;">
