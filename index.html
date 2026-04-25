@@ -121,8 +121,8 @@
       gap: 1.5rem;
     }
     .nav-brand { display: flex; align-items: center; gap: 0.9rem; text-decoration: none; flex-shrink: 0; }
-    .nav-brand img { height: 84px; object-fit: contain; transition: height 0.35s ease; }
-    #navbar.scrolled .nav-brand img { height: 72px; }
+    .nav-brand img { height: 84px; object-fit: contain; transition: height 0.35s ease, margin 0.35s ease; margin: -10px 0; }
+    #navbar.scrolled .nav-brand img { height: 72px; margin: -9px 0; }
     .nav-brand-text { line-height: 1.15; }
     .nav-brand-name {
       font-family: 'Fraunces', serif;
@@ -1141,8 +1141,8 @@
       #menuBtn { display: flex !important; }
       .footer-grid { grid-template-columns: 1fr !important; }
       .section-wrap { padding: 0 1.25rem; }
-      .nav-brand img { height: 64px; }
-      #navbar.scrolled .nav-brand img { height: 56px; }
+      .nav-brand img { height: 64px; margin: -6px 0; }
+      #navbar.scrolled .nav-brand img { height: 56px; margin: -5px 0; }
       .nav-brand { gap: 0.55rem; }
       .nav-brand-name { font-size: 0.82rem; letter-spacing: -0.005em; }
       .nav-brand-sub { font-size: 0.5rem; letter-spacing: 0.12em; }
@@ -1196,8 +1196,8 @@
       .wa-float { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; }
     }
     @media (max-width: 420px) {
-      .nav-brand img { height: 58px; }
-      #navbar.scrolled .nav-brand img { height: 50px; }
+      .nav-brand img { height: 58px; margin: -6px 0; }
+      #navbar.scrolled .nav-brand img { height: 50px; margin: -5px 0; }
       .nav-brand { gap: 0.45rem; }
       .nav-brand-name { font-size: 0.76rem; }
       .nav-brand-sub { font-size: 0.46rem; }
@@ -1208,7 +1208,7 @@
       .hero-cta .btn-gold, .hero-cta .btn-ghost { width: 100%; flex: 0 0 auto; }
     }
     @media (max-width: 360px) {
-      .nav-brand img { height: 52px; }
+      .nav-brand img { height: 52px; margin: -5px 0; }
       .nav-brand-name { font-size: 0.72rem; }
       .nav-brand-ppiu { font-size: 0.4rem; letter-spacing: 0.02em; }
     }
