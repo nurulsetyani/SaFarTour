@@ -26,4 +26,4 @@ Disallow: /.claude/
 Crawl-delay: 1
 
 # Sitemap
-Sitemap: https://salamahfarhahtour.com/sitemap.xml
+Sitemap: https://salamahfarhahtt.com/sitemap.xml
