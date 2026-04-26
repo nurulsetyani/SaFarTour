@@ -1,0 +1,29 @@
+# robots.txt — Salamah Farhah Tour Travel
+# Travel umroh resmi Kemenag (PPIU 27062200296520002)
+# Update domain di Sitemap bila menggunakan domain lain
+
+User-agent: *
+Allow: /
+
+# Hindari kanibalisasi crawler dari folder build/dev
+Disallow: /node_modules/
+Disallow: /temporary screenshots/
+Disallow: /serve.mjs
+Disallow: /screenshot.mjs
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /CLAUDE.md
+Disallow: /.git/
+Disallow: /.claude/
+
+# Bot AI/scraper - opsional (uncomment untuk membatasi)
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: CCBot
+# Disallow: /
+
+# Crawl-delay 1 detik untuk ramah server
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://salamahfarhahtour.com/sitemap.xml
